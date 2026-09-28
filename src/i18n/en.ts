@@ -8,7 +8,7 @@ const en = {
     downloadCV: 'Download CV',
   },
   hero: {
-    available: 'Available immediately',
+    available: 'Currently employed',
     title: 'Senior Full Stack Engineer',
     subtitle: 'Java · Spring · Angular · Event-Driven Architecture · Azure',
     cta_cv: 'Download CV',
@@ -23,7 +23,7 @@ const en = {
     stats: {
       years: { value: '12+', label: 'Years of experience' },
       missions: { value: '10', label: 'Missions' },
-      status: { value: '✓', label: 'Available' },
+      status: { value: '✓', label: 'Employed' },
     },
     education_title: 'Education',
     education: [
@@ -82,7 +82,7 @@ const en = {
   },
   contact: {
     title: 'Contact',
-    subtitle: 'Available for freelance missions in the Côte d\'Azur area and beyond. Feel free to reach out directly.',
+    subtitle: 'Currently employed, open to new opportunities. Feel free to reach out directly.',
     items: [
       {
         icon: 'linkedin',

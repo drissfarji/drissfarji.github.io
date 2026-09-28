@@ -8,7 +8,7 @@ const fr = {
     downloadCV: 'Télécharger CV',
   },
   hero: {
-    available: 'Disponible immédiatement',
+    available: 'Actuellement en poste',
     title: 'Ingénieur Full Stack Senior',
     subtitle: 'Java · Spring · Angular · Architecture Événementielle · Azure',
     cta_cv: 'Télécharger CV',
@@ -23,7 +23,7 @@ const fr = {
     stats: {
       years: { value: '12+', label: 'Ans d\'expérience' },
       missions: { value: '10', label: 'Missions' },
-      status: { value: '✓', label: 'Disponible' },
+      status: { value: '✓', label: 'En poste' },
     },
     education_title: 'Formation',
     education: [
@@ -82,7 +82,7 @@ const fr = {
   },
   contact: {
     title: 'Contact',
-    subtitle: 'Disponible pour une mission freelance sur le 06 et alentours. N\'hésitez pas à me contacter directement.',
+    subtitle: 'Actuellement en poste, ouvert aux opportunités. N\'hésitez pas à me contacter directement.',
     items: [
       {
         icon: 'linkedin',

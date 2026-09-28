@@ -160,16 +160,6 @@ export default function Hero() {
                 <p className="font-display font-bold text-lg text-accent">12+</p>
                 <p className="font-mono text-[10px] text-secondary uppercase tracking-widest">Years exp.</p>
               </motion.div>
-
-              {/* Floating badge — current role */}
-              <motion.div
-                animate={{ y: [0, -4, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-                className="absolute -top-2 -right-6 glass-card px-3 py-2 rounded-xl"
-              >
-                <p className="font-mono text-[10px] text-secondary uppercase tracking-widest">Currently</p>
-                <p className="font-display font-semibold text-sm text-primary">Air France ✈</p>
-              </motion.div>
             </div>
           </motion.div>
         </div>
