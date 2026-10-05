@@ -7,11 +7,13 @@ export interface Experience {
   context: { fr: string; en: string }
   bullets: { fr: string[]; en: string[] }
   tech: string[]
+  highlight?: { value: string; label: { fr: string; en: string } }
 }
 
 export const experiences: Experience[] = [
   {
     id: 1,
+    highlight: { value: '600K → 17M', label: { fr: 'événements/jour vers historique Kafka', en: 'events/day to Kafka history' } },
     company: 'Air France',
     companyColor: '#1A56DB',
     role: {
@@ -46,6 +48,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 2,
+    highlight: { value: 'Struts → Angular', label: { fr: 'migration des écrans critiques', en: 'critical screens migrated' } },
     company: 'Air France',
     companyColor: '#1A56DB',
     role: {

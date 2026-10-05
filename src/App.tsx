@@ -1,5 +1,5 @@
+import { MotionConfig } from 'motion/react'
 import Navbar from './components/Navbar'
-import ContactBar from './components/ContactBar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Experience from './components/Experience'
@@ -10,18 +10,22 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="bg-deep text-primary font-body min-h-screen antialiased">
-      <header className="fixed top-0 inset-x-0 z-50">
+    <MotionConfig reducedMotion="user">
+      <div className="bg-concrete text-ink font-body min-h-screen antialiased">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-ink focus:text-concrete focus:px-4 focus:py-2">
+          Skip to content
+        </a>
         <Navbar />
-        <ContactBar />
-      </header>
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Hobbies />
-      <Contact />
-      <Footer />
-    </div>
+        <main id="main">
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Hobbies />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }

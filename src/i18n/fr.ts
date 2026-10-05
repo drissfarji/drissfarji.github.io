@@ -7,6 +7,7 @@ const fr = {
     contact: 'Contact',
     downloadCV: 'Télécharger CV',
   },
+  board: { title: 'Départs', all: 'Tout le parcours', current: 'En cours', landed: 'Atterri' },
   hero: {
     available: 'Actuellement en poste',
     title: 'Ingénieur Full Stack Senior',
@@ -106,7 +107,7 @@ const fr = {
   },
   footer: {
     built: 'Conçu & développé par Driss Farji',
-    stack: 'React · TypeScript · Tailwind · Framer Motion',
+    stack: 'React · TypeScript · Tailwind · Motion',
   },
 }
 

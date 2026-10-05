@@ -1,110 +1,35 @@
-import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import SectionTitle from './SectionTitle'
-
-const LinkedInIcon = () => (
-  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-  </svg>
-)
-
-const EmailIcon = () => (
-  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-  </svg>
-)
-
-const WhatsAppIcon = () => (
-  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-  </svg>
-)
-
-const icons: Record<string, React.ComponentType> = {
-  linkedin: LinkedInIcon,
-  email: EmailIcon,
-  whatsapp: WhatsAppIcon,
-}
-
-const cardStyles = {
-  linkedin: {
-    gradient: 'from-blue-600/15 to-blue-800/5',
-    border: 'border-blue-500/20 hover:border-blue-400/50',
-    icon: 'text-blue-400',
-    glow: 'hover:shadow-[0_0_40px_rgba(59,130,246,0.12)]',
-  },
-  email: {
-    gradient: 'from-purple-600/15 to-purple-800/5',
-    border: 'border-purple-500/20 hover:border-purple-400/50',
-    icon: 'text-purple-400',
-    glow: 'hover:shadow-[0_0_40px_rgba(168,85,247,0.12)]',
-  },
-  whatsapp: {
-    gradient: 'from-emerald-600/15 to-emerald-800/5',
-    border: 'border-emerald-500/20 hover:border-emerald-400/50',
-    icon: 'text-emerald-400',
-    glow: 'hover:shadow-[0_0_40px_rgba(16,185,129,0.12)]',
-  },
-}
+import Section from './Section'
 
 export default function Contact() {
   const { t } = useTranslation()
-  const items = t('contact.items', { returnObjects: true }) as {
-    icon: string; label: string; value: string; href: string
-  }[]
+  const items = t('contact.items', { returnObjects: true }) as { icon: string; label: string; value: string; href: string }[]
+  const email = items.find(i => i.icon === 'email')
+  const others = items.filter(i => i.icon !== 'email')
 
   return (
-    <section id="contact" className="section-pad max-w-7xl mx-auto">
-      <SectionTitle title={t('contact.title')} />
+    <Section id="contact" title={t('contact.title')} dark>
+      <p className="text-xl text-concrete/80 max-w-xl">{t('contact.subtitle')}</p>
 
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-secondary text-lg mb-12 max-w-xl"
-      >
-        {t('contact.subtitle')}
-      </motion.p>
+      {email && (
+        <a
+          href={email.href}
+          className="mt-8 inline-block font-display font-extrabold text-signal text-[clamp(1.6rem,5.2vw,4.4rem)] leading-none tracking-tight break-all underline decoration-[5px] underline-offset-[10px] decoration-signal/40 hover:decoration-signal"
+        >
+          {email.value}
+        </a>
+      )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {items.map((item, index) => {
-          const style = cardStyles[item.icon as keyof typeof cardStyles]
-          const Icon = icons[item.icon]
-
-          return (
-            <motion.a
-              key={index}
-              href={item.href}
-              target={item.icon !== 'email' ? '_blank' : undefined}
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.25 } }}
-              className={`group relative overflow-hidden bg-gradient-to-br ${style.gradient} backdrop-blur-xl border ${style.border} ${style.glow} rounded-2xl p-8 transition-all duration-300 cursor-pointer block`}
-            >
-              <div className="absolute inset-0 bg-card/50 rounded-2xl" />
-
-              <div className="relative">
-                <div className={`mb-5 ${style.icon} transition-transform duration-300 group-hover:scale-110`}>
-                  <Icon />
-                </div>
-                <p className="font-display font-bold text-xl text-primary mb-1">{item.label}</p>
-                <p className="font-mono text-sm text-secondary break-all">{item.value}</p>
-              </div>
-
-              {/* Arrow */}
-              <div className={`absolute top-7 right-7 ${style.icon} opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 group-hover:translate-x-0`}>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
-          )
-        })}
-      </div>
-    </section>
+      <ul className="mt-12 grid sm:grid-cols-2 gap-6 max-w-2xl">
+        {others.map(item => (
+          <li key={item.label}>
+            <a href={item.href} target="_blank" rel="noopener noreferrer" className="block border-t-2 border-concrete/30 hover:border-signal pt-3">
+              <span className="block font-bold text-lg">{item.label}</span>
+              <span className="block font-mono text-sm text-concrete/70 break-all">{item.value}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
   )
 }

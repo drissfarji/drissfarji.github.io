@@ -5,76 +5,79 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
   }
 
   body {
-    background-color: #060B1A;
-    color: #E8EEFA;
-    font-family: 'Inter', sans-serif;
+    background-color: #E6E7E2;
+    color: #101317;
+    font-family: 'Archivo', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  * {
-    box-sizing: border-box;
+  html {
+    color-scheme: light;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  a, button {
+    touch-action: manipulation;
   }
 
   ::selection {
-    background: rgba(79, 142, 247, 0.25);
-    color: #E8EEFA;
+    background: #FFC20E;
+    color: #101317;
+  }
+
+  :focus-visible {
+    outline: 3px solid #101317;
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible {
+    outline-color: #FFC20E;
   }
 }
 
 @layer components {
-  .bg-grid {
-    background-image: radial-gradient(rgba(79, 142, 247, 0.1) 1px, transparent 1px);
-    background-size: 44px 44px;
+  .name-display {
+    font-weight: 800;
+    font-stretch: 72%;
+    letter-spacing: -0.02em;
+    line-height: 0.84;
   }
 
-  .glass-card {
-    background: rgba(14, 24, 40, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(79, 142, 247, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  .flap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.86em;
+    height: 1.45em;
+    margin-right: 2px;
+    border-radius: 2px;
+    background: #22272d;
+    color: #FFC20E;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-weight: 500;
+    line-height: 1;
   }
-
-  .glass-card:hover {
-    border-color: rgba(79, 142, 247, 0.28);
-    box-shadow: 0 0 32px rgba(79, 142, 247, 0.06);
-  }
-
-  .tag {
-    @apply font-mono text-xs px-2.5 py-1 rounded-md bg-surface/80 text-secondary border border-white/5;
-  }
-
-  .tag-accent {
-    @apply font-mono text-xs px-2.5 py-1 rounded-md bg-accent/10 text-accent border border-accent/20;
-  }
-
-  .section-pad {
-    @apply py-24 px-6;
-  }
-
-  .text-gradient {
-    background: linear-gradient(135deg, #4F8EF7 0%, #818CF8 60%, #A78BFA 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-}
-
-@layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  .flap::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.7);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;

@@ -7,6 +7,7 @@ const en = {
     contact: 'Contact',
     downloadCV: 'Download CV',
   },
+  board: { title: 'Departures', all: 'Full flight log', current: 'Current', landed: 'Landed' },
   hero: {
     available: 'Currently employed',
     title: 'Senior Full Stack Engineer',
@@ -106,7 +107,7 @@ const en = {
   },
   footer: {
     built: 'Designed & built by Driss Farji',
-    stack: 'React · TypeScript · Tailwind · Framer Motion',
+    stack: 'React, TypeScript, Tailwind, Motion',
   },
 }
 
