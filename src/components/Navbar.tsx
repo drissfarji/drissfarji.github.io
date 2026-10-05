@@ -63,7 +63,7 @@ export default function Navbar() {
             </button>
 
             <a
-              href={lang === 'fr' ? '/cv-fr.pdf' : '/cv-en.pdf'}
+              href={`${import.meta.env.BASE_URL}${lang === 'fr' ? 'cv-fr.pdf' : 'cv-en.pdf'}`}
               download
               className="hidden md:flex items-center gap-2 px-4 py-2 bg-accent/10 hover:bg-accent/20 border border-accent/25 text-accent text-sm font-medium rounded-lg transition-all duration-200"
             >
@@ -107,7 +107,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href={lang === 'fr' ? '/cv-fr.pdf' : '/cv-en.pdf'}
+              href={`${import.meta.env.BASE_URL}${lang === 'fr' ? 'cv-fr.pdf' : 'cv-en.pdf'}`}
               download
               className="mt-2 flex items-center gap-2 px-4 py-3 bg-accent/10 border border-accent/25 text-accent text-sm font-medium rounded-lg w-fit"
             >

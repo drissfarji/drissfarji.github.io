@@ -76,7 +76,7 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div variants={item} className="flex flex-wrap gap-4 mb-12">
               <a
-                href={lang === 'fr' ? '/cv-fr.pdf' : '/cv-en.pdf'}
+                href={`${import.meta.env.BASE_URL}${lang === 'fr' ? 'cv-fr.pdf' : 'cv-en.pdf'}`}
                 download
                 className="group flex items-center gap-2.5 px-7 py-3.5 bg-accent text-white font-semibold rounded-xl hover:bg-accent/90 transition-all duration-200 shadow-[0_0_30px_rgba(79,142,247,0.25)] hover:shadow-[0_0_50px_rgba(79,142,247,0.4)]"
               >
@@ -143,7 +143,7 @@ export default function Hero() {
               {/* Photo container */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-accent/30 shadow-[0_0_60px_rgba(79,142,247,0.15)]">
                 <img
-                  src="/photo-profil-crop.jpg"
+                  src={`${import.meta.env.BASE_URL}photo-profil-crop.jpg`}
                   alt="Driss Farji"
                   className="w-full h-full object-cover object-center"
                 />
