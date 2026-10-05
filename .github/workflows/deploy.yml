@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
 # Two designs live side by side:
-#   /      -> the original design, frozen at the `design-v1` tag
-#   /new/  -> the current design on main
+#   /      -> the current design on main
+#   /old/  -> the original design, kept on the `legacy-design` branch (tag `design-v1` marks the unpatched original)
 on:
   push:
     branches:
@@ -20,13 +20,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout new design (main)
+      - name: Checkout current design (main)
         uses: actions/checkout@v4
 
       - name: Checkout original design
         uses: actions/checkout@v4
         with:
-          ref: design-v1
+          ref: legacy-design
           path: old
 
       - name: Setup Node
@@ -38,22 +38,22 @@ jobs:
             package-lock.json
             old/package-lock.json
 
-      - name: Build original design (served at /)
+      - name: Build original design (served at /old/)
         working-directory: old
+        run: |
+          npm ci
+          BASE_PATH=/old/ npm run build
+
+      - name: Build current design (served at /)
         run: |
           npm ci
           npm run build
 
-      - name: Build new design (served at /new/)
-        run: |
-          npm ci
-          BASE_PATH=/new/ npm run build
-
       - name: Assemble site
         run: |
-          mkdir -p site/new
-          cp -R old/dist/. site/
-          cp -R dist/. site/new/
+          mkdir -p site/old
+          cp -R dist/. site/
+          cp -R old/dist/. site/old/
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
